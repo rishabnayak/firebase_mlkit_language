@@ -1,10 +1,10 @@
 part of firebase_mllanguage;
 
-/// Used for finding [LanguageLabel]s in a supplied image.
+/// Used for finding [LanguageLabel]s in supplied text.
 ///
 ///
 /// A language identifier is created via
-/// `languageIdentifier([VisionEdgeImageLabelerOptions options])` in [FirebaseLanguage]:
+/// `languageIdentifier([LanguageIdentifierOptions options])` in [FirebaseLanguage]:
 ///
 /// ```dart
 ///
