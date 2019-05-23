@@ -16,14 +16,14 @@ part of firebase_mllanguage;
 
 class LanguageTranslator {
   LanguageTranslator._(
-      {@required LanguageCode fromLanguage, @required LanguageCode toLanguage})
+      {@required SupportedLanguages fromLanguage, @required SupportedLanguages toLanguage})
       : _fromLanguage = fromLanguage,
       _toLanguage = toLanguage,
       assert(fromLanguage != null),
       assert(toLanguage != null);
 
-      final LanguageCode _fromLanguage;
-      final LanguageCode _toLanguage;
+      final SupportedLanguages _fromLanguage;
+      final SupportedLanguages _toLanguage;
 
   /// Translates the input text.
   Future<List<TranslatedTextLabel>> processText(String text) async {
@@ -45,8 +45,8 @@ class LanguageTranslator {
   }
 }
 
-/// BCP-47 Language Codes accepted for [LanguageCode]
-class LanguageCode {
+/// Conversion for [SupportedLanguages] to BCP-47 language codes
+class SupportedLanguages {
   static const Afrikaans = 'af';
   static const Arabic = 'ar';
   static const Belarusian = 'be';
