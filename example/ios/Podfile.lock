@@ -1,0 +1,22 @@
+PODS:
+  - firebase_mlkit_language (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - firebase_mlkit_language (from `.symlinks/plugins/firebase_mlkit_language/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
+
+EXTERNAL SOURCES:
+  firebase_mlkit_language:
+    :path: ".symlinks/plugins/firebase_mlkit_language/ios"
+  Flutter:
+    :path: ".symlinks/flutter/ios-release"
+
+SPEC CHECKSUMS:
+  firebase_mlkit_language: ad14904473cc4848886690a479d9950cb2f62f1d
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.6.1
