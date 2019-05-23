@@ -48,123 +48,64 @@ class LanguageTranslator {
 /// BCP-47 Language Codes accepted for [LanguageCode]
 class LanguageCode {
   static const Afrikaans = 'af';
-  // Afrikaans
-  static const Arabic = 'ar',
-  // Arabic
-  be,
-  // Belarusian
-  bg,
-  // Bulgarian
-  bn,
-  // Bengali
-  ca,
-  // Catalan
-  cs,
-  // Czech
-  cy,
-  // Welsh
-  da,
-  // Danish
-  de,
-  // German
-  el,
-  // Greek
-  en,
-  // English
-  eo,
-  // Esperanto
-  es,
-  // Spanish
-  et,
-  // Estonian
-  fa,
-  // Persian
-  fi,
-  // Finnish
-  fr,
-  // French
-  ga,
-  // Irish
-  gl,
-  // Galician
-  gu,
-  // Gujarati
-  he,
-  // Hebrew
-  hi,
-  // Hindi
-  hr,
-  // Croatian
-  ht,
-  // Haitian
-  hu,
-  // Hungarian
-  id,
-  // Indonesian
-  is,
-  // Icelandic
-  it,
-  // Italian
-  ja,
-  // Japanese
-  ka,
-  // Georgian
-  kn,
-  // Kannada
-  ko,
-  // Korean
-  lt,
-  // Lithuanian
-  lv,
-  // Latvian
-  mk,
-  // Macedonian
-  mr,
-  // Marathi
-  ms,
-  // Malay
-  mt,
-  // Maltese
-  nl,
-  // Dutch
-  no,
-  // Norwegian
-  pl,
-  // Polish
-  pt,
-  // Portuguese
-  ro,
-  // Romanian
-  ru,
-  // Russian
-  sk,
-  // Slovak
-  sl,
-  // Slovenian
-  sq,
-  // Albanian
-  sv,
-  // Swedish
-  sw,
-  // Swahili
-  ta,
-  // Tamil
-  te,
-  // Telugu
-  th,
-  // Thai
-  tl,
-  // Tagalog
-  tr,
-  // Turkish
-  uk,
-  // Ukranian
-  ur,
-  // Urdu
-  vi,
-  // Vietnamese
-  zh,
-  // Chinese
+  static const Arabic = 'ar';
+  static const Belarusian = 'be';
+  static const Bulgarian = 'bg';
+  static const Bengali = 'bn';
+  static const Catalan = 'ca';
+  static const Czech = 'cs';
+  static const Welsh = 'cy';
+  static const Danish = 'da';
+  static const German = 'de';
+  static const Greek = 'el';
+  static const English = 'en';
+  static const Esperanto = 'eo';
+  static const Spanish = 'es';
+  static const Estonian = 'et';
+  static const Persian = 'fa';
+  static const Finnish = 'fi';
+  static const French = 'fr';
+  static const Irish = 'ga';
+  static const Galician = 'gl';
+  static const Gujarati = 'gu';
+  static const Hebrew = 'he';
+  static const Hindi = 'hi';
+  static const Croatian = 'hr';
+  static const Haitian = 'ht';
+  static const Hungarian = 'hu';
+  static const Indonesian = 'id';
+  static const Icelandic = 'is';
+  static const Italian = 'it';
+  static const Japanese = 'ja';
+  static const Georgian = 'ka';
+  static const Kannada = 'kn';
+  static const Korean = 'ko';
+  static const Lithuanian = 'lt';
+  static const Latvian = 'lv';
+  static const Macedonian = 'mk';
+  static const Marathi = 'mr';
+  static const Malay = 'ms';
+  static const Maltese = 'mt';
+  static const Dutch = 'nl';
+  static const Norwegian = 'no';
+  static const Polish = 'pl';
+  static const Portuguese = 'pt';
+  static const Romanian = 'ro';
+  static const Russian = 'ru';
+  static const Slovak = 'sk';
+  static const Slovenian = 'sl';
+  static const Albanian = 'sq';
+  static const Swedish = 'sv';
+  static const Swahili = 'sw';
+  static const Tamil = 'ta';
+  static const Telugu = 'te';
+  static const Thai = 'th';
+  static const Tagalog = 'tl';
+  static const Turkish = 'tr';
+  static const Ukranian = 'uk';
+  static const Urdu = 'ur';
+  static const Vietnamese = 'vi';
+  static const Chinese = 'zh';
 }
 
 /// Represents a language label detected by [LanguageIdentifier].
