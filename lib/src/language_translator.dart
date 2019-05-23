@@ -167,27 +167,6 @@ class LanguageCode {
   // Chinese
 }
 
-/// Options for on device language labeler.
-///
-/// Confidence threshold could be provided for the language identification. For example,
-/// if the confidence threshold is set to 0.7, only labels with
-/// confidence >= 0.7 would be returned. The default threshold is 0.5.
-class LanguageTranslatorOptions {
-  /// Constructor for [LanguageIdentifierOptions].
-  ///
-  /// Confidence threshold could be provided for the language identification.
-  /// For example, if the confidence threshold is set to 0.7, only labels with
-  /// confidence >= 0.7 would be returned. The default threshold is 0.5.
-  const LanguageTranslatorOptions({this.confidenceThreshold = 0.5})
-      : assert(confidenceThreshold >= 0.0),
-        assert(confidenceThreshold <= 1.0);
-
-  /// The minimum confidence threshold of labels to be detected.
-  ///
-  /// Required to be in range [0.0, 1.0].
-  final double confidenceThreshold;
-}
-
 /// Represents a language label detected by [LanguageIdentifier].
 class TranslatedTextLabel {
   TranslatedTextLabel._(dynamic data)
