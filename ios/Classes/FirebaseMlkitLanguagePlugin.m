@@ -1,20 +1,47 @@
 #import "FirebaseMlkitLanguagePlugin.h"
 
-@implementation FirebaseMlkitLanguagePlugin
+static FlutterError *getFlutterError(NSError *error) {
+    return [FlutterError errorWithCode:[NSString stringWithFormat:@"Error %d", (int)error.code]
+                               message:error.domain
+                               details:error.localizedDescription];
+}
+
+@implementation FLTFirebaseMlkitLanguagePlugin
+
++ (void)handleError:(NSError *)error result:(FlutterResult)result {
+    result(getFlutterError(error));
+}
+
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"firebase_mlkit_language"
-            binaryMessenger:[registrar messenger]];
-  FirebaseMlkitLanguagePlugin* instance = [[FirebaseMlkitLanguagePlugin alloc] init];
-  [registrar addMethodCallDelegate:instance channel:channel];
+    FlutterMethodChannel* channel = [FlutterMethodChannel
+                                     methodChannelWithName:@"firebase_mlkit_language"
+                                     binaryMessenger:[registrar messenger]];
+    FLTFirebaseMlkitLanguagePlugin* instance = [[FLTFirebaseMlkitLanguagePlugin alloc] init];
+    [registrar addMethodCallDelegate:instance channel:channel];
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        if (![FIRApp appNamed:@"__FIRAPP_DEFAULT"]) {
+            NSLog(@"Configuring the default Firebase app...");
+            [FIRApp configure];
+            NSLog(@"Configured the default Firebase app %@.", [FIRApp defaultApp].name);
+        }
+    }
+    return self;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-  } else {
-    result(FlutterMethodNotImplemented);
-  }
+    NSString *text = call.arguments[@"text"];
+    NSDictionary *options = call.arguments[@"options"];
+    if ([@"LanguageIdentifier#processText" isEqualToString:call.method]) {
+        [LanguageIdentifier handleEvent:text options:options result:result];
+    } else if([@"LanguageTranslator#processText" isEqualToString:call.method]){
+        [LanguageTranslator handleEvent:text options:options result:result];
+    } else {
+        result(FlutterMethodNotImplemented);
+    }
 }
 
 @end
