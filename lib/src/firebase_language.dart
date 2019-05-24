@@ -22,7 +22,7 @@ class FirebaseLanguage {
   }
 
   /// Creates an instance of [LanguageTranslator].
-  LanguageTranslator languageTranslator(SupportedLanguages fromLanguage, SupportedLanguages toLanguage) {
+  LanguageTranslator languageTranslator(String fromLanguage, String toLanguage) {
     return LanguageTranslator._(toLanguage: toLanguage, fromLanguage: fromLanguage);
   }
 
