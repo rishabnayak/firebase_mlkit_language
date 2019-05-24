@@ -14,8 +14,30 @@
 @optional
 @end
 
+@protocol ModelAgent
+@required
++ (void)handleEvent:(NSString *)text
+             result:(FlutterResult)result;
+@optional
+@end
+
+@protocol ViewModelAgent
+@required
++ (void)result:(FlutterResult)result;
+@optional
+@end
+
 @interface LanguageIdentifier : NSObject <LangAgent>
 @end
 
 @interface LanguageTranslator : NSObject <LangAgent>
+@end
+
+@interface DeleteModel : NSObject <ModelAgent>
+@end
+
+@interface ViewModels : NSObject <ViewModelAgent>
+@end
+
+@interface DownloadModel : NSObject <ModelAgent>
 @end

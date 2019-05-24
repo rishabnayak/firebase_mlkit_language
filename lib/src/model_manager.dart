@@ -19,26 +19,22 @@ class ModelManager {
 
   /// Shows all locally available models.
   Future<List<String>> viewModels() async {
-    final List<String> availableModels = await FirebaseLanguage.channel
-        .invokeMethod('LanguageTranslator#viewModels');
+    final List<String> availableModels =
+        await FirebaseLanguage.channel.invokeMethod('ModelManager#viewModels');
     return availableModels;
   }
 
   /// Deletes specified model.
   Future<bool> deleteModel({@required String toDelete}) async {
-    final bool status = await FirebaseLanguage.channel
-        .invokeMethod('LanguageTranslator#deleteModel', <String, dynamic>{
-      'model': toDelete
-      });
+    final bool status = await FirebaseLanguage.channel.invokeMethod(
+        'ModelManager#deleteModel', <String, dynamic>{'model': toDelete});
     return status;
   }
 
   /// Downloads specified model
   Future<bool> downloadModel({@required String toDownload}) async {
-    final bool status = await FirebaseLanguage.channel
-        .invokeMethod('LanguageTranslator#downloadModel', <String, dynamic>{
-      'model': toDownload
-      });
+    final bool status = await FirebaseLanguage.channel.invokeMethod(
+        'ModelManager#downloadModel', <String, dynamic>{'model': toDownload});
     return status;
   }
 }
