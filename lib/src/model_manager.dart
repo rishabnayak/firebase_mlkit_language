@@ -25,15 +25,15 @@ class ModelManager {
   }
 
   /// Deletes specified model.
-  Future<bool> deleteModel({@required String toDelete}) async {
-    final bool status = await FirebaseLanguage.channel.invokeMethod(
+  Future<String> deleteModel(String toDelete) async {
+    final String status = await FirebaseLanguage.channel.invokeMethod(
         'ModelManager#deleteModel', <String, dynamic>{'model': toDelete});
     return status;
   }
 
   /// Downloads specified model
-  Future<bool> downloadModel({@required String toDownload}) async {
-    final bool status = await FirebaseLanguage.channel.invokeMethod(
+  Future<String> downloadModel(String toDownload) async {
+    final String status = await FirebaseLanguage.channel.invokeMethod(
         'ModelManager#downloadModel', <String, dynamic>{'model': toDownload});
     return status;
   }
