@@ -10,7 +10,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
@@ -20,11 +19,18 @@ class _MyAppState extends State<MyApp> {
   check() async {
     String test = "testing this function";
 
-    FirebaseLanguage.instance.languageIdentifier().processText(test).then((onValue){
+    FirebaseLanguage.instance
+        .languageIdentifier()
+        .processText(test)
+        .then((onValue) {
       print(onValue[0].languageCode);
     });
 
-    FirebaseLanguage.instance.languageTranslator(SupportedLanguages.English, SupportedLanguages.Telugu).processText(test).then((onValue){
+    FirebaseLanguage.instance
+        .languageTranslator(
+            SupportedLanguages.English, SupportedLanguages.Telugu)
+        .processText(test)
+        .then((onValue) {
       print(onValue);
     });
 
