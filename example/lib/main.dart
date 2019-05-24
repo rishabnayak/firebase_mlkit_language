@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
         .then((onValue) {
       print(onValue);
       FirebaseLanguage.instance.modelManager().viewModels().then((onValue) {
-        print(onValue.runtimeType);
+        print(onValue);
       });
     });
 

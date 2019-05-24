@@ -13,9 +13,7 @@
     [FIRTranslateRemoteModel translateRemoteModelForApp:FIRApp.defaultApp
                                                language:modelName
                                              conditions:conditions];
-    NSProgress *dlProgress = [[FIRModelManager modelManager] downloadRemoteModel:modelToDownload];
-    if (dlProgress.isFinished) {
-        result(@"Downloaded");
-    }
+    [[FIRModelManager modelManager] downloadRemoteModel:modelToDownload];
+    result(@"Downloaded");
 }
 @end
