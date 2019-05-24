@@ -26,4 +26,8 @@ class FirebaseLanguage {
     return LanguageTranslator._(toLanguage: toLanguage, fromLanguage: fromLanguage);
   }
 
+  /// Creates an instance of [ModelManager].
+  ModelManager modelManager(){
+    return ModelManager._();
+  }
 }
