@@ -1,4 +1,6 @@
 PODS:
+  - Firebase (6.1.0):
+    - Firebase/Core (= 6.1.0)
   - Firebase/Core (6.1.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.0.1)
@@ -17,6 +19,7 @@ PODS:
     - Firebase/CoreOnly
     - FirebaseMLNLTranslate (~> 0.16.1)
   - firebase_mlkit_language (0.0.1):
+    - Firebase
     - Firebase/Core
     - Firebase/MLCommon
     - Firebase/MLNaturalLanguage
@@ -127,7 +130,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f
-  firebase_mlkit_language: 24845bb3fc3de7259841a828e62fb8f188406faf
+  firebase_mlkit_language: 5d88f4597c9713e252d9bf1afcf5dfd6439889bf
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
   FirebaseCore: 66bdef3b310a026880e2a5bc8aa586ab62ce4543
