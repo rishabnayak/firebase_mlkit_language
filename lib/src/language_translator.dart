@@ -16,15 +16,15 @@ part of firebase_mllanguage;
 
 class LanguageTranslator {
   LanguageTranslator._(
-      {@required SupportedLanguages fromLanguage,
-      @required SupportedLanguages toLanguage})
+      {@required String fromLanguage,
+      @required String toLanguage})
       : _fromLanguage = fromLanguage,
         _toLanguage = toLanguage,
         assert(fromLanguage != null),
         assert(toLanguage != null);
 
-  final SupportedLanguages _fromLanguage;
-  final SupportedLanguages _toLanguage;
+  final String _fromLanguage;
+  final String _toLanguage;
 
   /// Translates the input text.
   Future<String> processText(String text) async {
