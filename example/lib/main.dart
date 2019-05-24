@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       print(onValue[0].languageCode);
     });
 
-    FirebaseLanguage.instance.languageTranslator(SupportedLanguages.English, SupportedLanguages.Persian).processText(test).then((onValue){
+    FirebaseLanguage.instance.languageTranslator(SupportedLanguages.English, SupportedLanguages.Telugu).processText(test).then((onValue){
       print(onValue);
     });
 
