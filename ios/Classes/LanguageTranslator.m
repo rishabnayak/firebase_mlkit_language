@@ -6,19 +6,43 @@
 
 
 + (void)handleEvent:(NSString *)text options:(NSDictionary *)options result:(FlutterResult)result {
-    FIRTranslateLanguage out = FIRTranslateLanguageForLanguageCode(options[@"fromLanguage"]);
+    //    Get Proper Inputs for Translator
+    FIRTranslateLanguage sourceLanguageString = FIRTranslateLanguageForLanguageCode(options[@"fromLanguage"]);
+    FIRTranslateLanguage targetLanguageString = FIRTranslateLanguageForLanguageCode(options[@"toLanguage"]);
+    
+    //    Get Options
+    FIRTranslatorOptions *translationOptions =
+    [[FIRTranslatorOptions alloc] initWithSourceLanguage:sourceLanguageString
+                                          targetLanguage:targetLanguageString];
+    //    Intialize Translator
+    FIRTranslator *customTranslator =
+    [[FIRNaturalLanguage naturalLanguage] translatorWithOptions:translationOptions];
+    
+    //    Create Conditions
+    FIRModelDownloadConditions *conditions =
+    [[FIRModelDownloadConditions alloc] initWithAllowsCellularAccess:YES
+                                         allowsBackgroundDownloading:YES];
+    
+    [customTranslator downloadModelIfNeededWithConditions:conditions
+                                               completion:^(NSError *_Nullable error) {
+                                                   if (error) {
+                                                       [FLTFirebaseMlkitLanguagePlugin handleError:error result:result];
+                                                       return;
+                                                   }
+                                                   
+                                               }];
+    //   Send Example Translation
+    [customTranslator translateText:text
+                         completion:^(NSString *_Nullable translatedText,
+                                      NSError *_Nullable error) {
+                             if (error != nil || translatedText == nil) {
+                                 return;
+                             }
+                             
+                             result(translatedText);
+                         }];
+    
+    
+    
 }
-
-+ (FIRTranslatorOptions *)parseLanguageCode:(NSString *)languageCode {
-    if ([languageCode isEqualToString: @"en"]) {
-//        FIRTranslateLanguageForLanguageCode(languageCode)
-        return nil;
-    } else {
-        return nil;
-    }
-//    FIRLanguageIdentificationOptions *options =
-//    [[FIRLanguageIdentificationOptions alloc] initWithConfidenceThreshold: [conf floatValue]];
-//    return options;
-}
-
 @end
