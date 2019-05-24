@@ -27,9 +27,23 @@ class _MyAppState extends State<MyApp> {
     });
 
     FirebaseLanguage.instance
+        .modelManager()
+        .downloadModel(SupportedLanguages.Greek)
+        .then((onValue) {
+      print(onValue);
+    });
+
+    FirebaseLanguage.instance
         .languageTranslator(
-            SupportedLanguages.English, SupportedLanguages.Telugu)
+            SupportedLanguages.English, SupportedLanguages.Danish)
         .processText(test)
+        .then((onValue) {
+      print(onValue);
+    });
+
+    FirebaseLanguage.instance
+        .modelManager()
+        .deleteModel(SupportedLanguages.Telugu)
         .then((onValue) {
       print(onValue);
     });
