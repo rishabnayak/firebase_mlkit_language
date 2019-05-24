@@ -16,8 +16,7 @@ part of firebase_mllanguage;
 
 class LanguageTranslator {
   LanguageTranslator._(
-      {@required String fromLanguage,
-      @required String toLanguage})
+      {@required String fromLanguage, @required String toLanguage})
       : _fromLanguage = fromLanguage,
         _toLanguage = toLanguage,
         assert(fromLanguage != null),
