@@ -102,7 +102,7 @@ PODS:
 
 DEPENDENCIES:
   - firebase_mlkit_language (from `.symlinks/plugins/firebase_mlkit_language/ios`)
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -126,7 +126,7 @@ EXTERNAL SOURCES:
   firebase_mlkit_language:
     :path: ".symlinks/plugins/firebase_mlkit_language/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
 
 SPEC CHECKSUMS:
   Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f

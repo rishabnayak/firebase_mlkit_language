@@ -17,35 +17,45 @@ class _MyAppState extends State<MyApp> {
   }
 
   check() async {
-    String test = "testing this function";
+    // String test = "testing this function";
 
-    FirebaseLanguage.instance
-        .languageIdentifier()
-        .processText(test)
-        .then((onValue) {
-      print(onValue[0].languageCode);
-    });
+    // FirebaseLanguage.instance
+    //     .languageIdentifier()
+    //     .processText(test)
+    //     .then((onValue) {
+    //   print(onValue[0].languageCode);
+    // });
+    //
+    // FirebaseLanguage.instance
+    //     .modelManager()
+    //     .downloadModel(SupportedLanguages.Greek)
+    //     .then((onValue) {
+    //   print(onValue);
+    // });
+    //
+    // FirebaseLanguage.instance
+    //     .languageTranslator(
+    //         SupportedLanguages.English, SupportedLanguages.Danish)
+    //     .processText(test)
+    //     .then((onValue) {
+    //   print(onValue);
+    // });
+    //
+    // FirebaseLanguage.instance
+    //     .modelManager()
+    //     .deleteModel(SupportedLanguages.Telugu)
+    //     .then((onValue) {
+    //   print(onValue);
+    // });
 
     FirebaseLanguage.instance
         .modelManager()
         .downloadModel(SupportedLanguages.Greek)
         .then((onValue) {
       print(onValue);
-    });
-
-    FirebaseLanguage.instance
-        .languageTranslator(
-            SupportedLanguages.English, SupportedLanguages.Danish)
-        .processText(test)
-        .then((onValue) {
-      print(onValue);
-    });
-
-    FirebaseLanguage.instance
-        .modelManager()
-        .deleteModel(SupportedLanguages.Telugu)
-        .then((onValue) {
-      print(onValue);
+      FirebaseLanguage.instance.modelManager().viewModels().then((onValue) {
+        print(onValue.runtimeType);
+      });
     });
 
     // If the widget was removed from the tree while the asynchronous platform
