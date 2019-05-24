@@ -33,12 +33,19 @@ static FlutterError *getFlutterError(NSError *error) {
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
+    NSString *modelname = call.arguments[@"model"];
     NSString *text = call.arguments[@"text"];
     NSDictionary *options = call.arguments[@"options"];
     if ([@"LanguageIdentifier#processText" isEqualToString:call.method]) {
         [LanguageIdentifier handleEvent:text options:options result:result];
     } else if([@"LanguageTranslator#processText" isEqualToString:call.method]){
         [LanguageTranslator handleEvent:text options:options result:result];
+    } else if([@"ModelManager#viewModels" isEqualToString:call.method]){
+        [ViewModels result:result];
+    } else if([@"ModelManager#deleteModel" isEqualToString:call.method]){
+        [DeleteModel handleEvent:modelname result:result];
+    } else if([@"ModelManager#downloadModel" isEqualToString:call.method]){
+        [DownloadModel handleEvent:modelname result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
