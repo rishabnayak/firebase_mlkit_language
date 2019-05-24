@@ -13,7 +13,11 @@
     [FIRTranslateRemoteModel translateRemoteModelForApp:FIRApp.defaultApp
                                                language:modelName
                                              conditions:conditions];
-    [[FIRModelManager modelManager] downloadRemoteModel:modelToDownload];
-    result(@"Downloaded");
+    if ([[FIRModelManager modelManager] isRemoteModelDownloaded:modelToDownload]) {
+        result(@"Already Downloaded");
+    } else{
+        [[FIRModelManager modelManager] downloadRemoteModel:modelToDownload];
+        result(@"Downloaded");
+    }
 }
 @end
