@@ -66,13 +66,11 @@ class LanguageIdentifierOptions {
 class LanguageLabel {
   LanguageLabel._(dynamic data)
       : confidence = data['confidence'],
-        language = data['language'];
+        languageCode = data['languageCode'];
 
   /// The overall confidence of the result. Range [0.0, 1.0].
   final double confidence;
 
-  /// A detected label from the given image.
-  ///
-  /// The label returned here is in English only.
-  final String language;
+  /// A detected language from the given text.
+  final String languageCode;
 }

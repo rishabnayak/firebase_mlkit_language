@@ -4,30 +4,31 @@ part of firebase_mllanguage;
 ///
 ///
 /// A language translator is created via
-/// `languageTranslator([LanguageIdentifierOptions options])` in [FirebaseLanguage]:
+/// `languageTranslator(fromLanguage: SupportedLanguages.lang, toLanguage: SupportedLanguages.lang)` in [FirebaseLanguage]:
 ///
 /// ```dart
 ///
 /// final LanguageTranslator languageTranslator =
-///     FirebaseLanguage.instance.languageTranslator(options);
+///     FirebaseLanguage.instance.languageTranslator(fromLanguage: SupportedLanguages.lang, toLanguage: SupportedLanguages.lang);
 ///
 /// final List<TranslatedTextLabel> labels = await languageTranslator.processText("Sample Text");
 /// ```
 
 class LanguageTranslator {
   LanguageTranslator._(
-      {@required SupportedLanguages fromLanguage, @required SupportedLanguages toLanguage})
+      {@required SupportedLanguages fromLanguage,
+      @required SupportedLanguages toLanguage})
       : _fromLanguage = fromLanguage,
-      _toLanguage = toLanguage,
-      assert(fromLanguage != null),
-      assert(toLanguage != null);
+        _toLanguage = toLanguage,
+        assert(fromLanguage != null),
+        assert(toLanguage != null);
 
-      final SupportedLanguages _fromLanguage;
-      final SupportedLanguages _toLanguage;
+  final SupportedLanguages _fromLanguage;
+  final SupportedLanguages _toLanguage;
 
   /// Translates the input text.
-  Future<List<TranslatedTextLabel>> processText(String text) async {
-    final List<dynamic> reply = await FirebaseLanguage.channel
+  Future<String> processText(String text) async {
+    final String reply = await FirebaseLanguage.channel
         .invokeMethod('LanguageTranslator#processText', <String, dynamic>{
       'options': <String, dynamic>{
         'fromLanguage': _fromLanguage,
@@ -36,12 +37,7 @@ class LanguageTranslator {
       'text': text
     });
 
-    final List<TranslatedTextLabel> labels = <TranslatedTextLabel>[];
-    for (dynamic data in reply) {
-      labels.add(TranslatedTextLabel._(data));
-    }
-
-    return labels;
+    return reply;
   }
 }
 
@@ -106,19 +102,4 @@ class SupportedLanguages {
   static const Urdu = 'ur';
   static const Vietnamese = 'vi';
   static const Chinese = 'zh';
-}
-
-/// Represents a language label detected by [LanguageIdentifier].
-class TranslatedTextLabel {
-  TranslatedTextLabel._(dynamic data)
-      : confidence = data['confidence'],
-        language = data['language'];
-
-  /// The overall confidence of the result. Range [0.0, 1.0].
-  final double confidence;
-
-  /// A detected label from the given image.
-  ///
-  /// The label returned here is in English only.
-  final String language;
 }
