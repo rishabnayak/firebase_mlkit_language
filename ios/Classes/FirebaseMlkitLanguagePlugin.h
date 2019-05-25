@@ -2,22 +2,19 @@
 
 #import "Firebase/Firebase.h"
 
-@interface FLTFirebaseMlkitLanguagePlugin : NSObject<FlutterPlugin>
+@interface FLTFirebaseMlkitLanguagePlugin : NSObject <FlutterPlugin>
 + (void)handleError:(NSError *)error result:(FlutterResult)result;
 @end
 
 @protocol LangAgent
 @required
-+ (void)handleEvent:(NSString *)text
-            options:(NSDictionary *)options
-             result:(FlutterResult)result;
++ (void)handleEvent:(NSString *)text options:(NSDictionary *)options result:(FlutterResult)result;
 @optional
 @end
 
 @protocol ModelAgent
 @required
-+ (void)handleEvent:(NSString *)text
-             result:(FlutterResult)result;
++ (void)handleEvent:(NSString *)text result:(FlutterResult)result;
 @optional
 @end
 

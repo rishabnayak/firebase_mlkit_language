@@ -16,58 +16,44 @@ class _MyAppState extends State<MyApp> {
     check();
   }
 
-  check() async {
-    String test = "testing this function";
+  void check() async {
+    final String test = "testing this function";
 
-    // FirebaseLanguage.instance
-    //     .languageIdentifier()
-    //     .processText(test)
-    //     .then((onValue) {
-    //   print(onValue[0].languageCode);
-    // });
-    //
-    // FirebaseLanguage.instance
-    //     .modelManager()
-    //     .downloadModel(SupportedLanguages.Greek)
-    //     .then((onValue) {
-    //   print(onValue);
-    // });
-    //
+    FirebaseLanguage.instance
+        .languageIdentifier()
+        .processText(test)
+        .then((List<LanguageLabel> onValue) {
+      print(onValue[0].languageCode);
+    });
+
+    FirebaseLanguage.instance
+        .modelManager()
+        .downloadModel(SupportedLanguages.Greek)
+        .then((String onValue) {
+      print(onValue);
+    });
+
     FirebaseLanguage.instance
         .languageTranslator(
             SupportedLanguages.English, SupportedLanguages.Vietnamese)
         .processText(test)
-        .then((onValue) {
-      print(onValue);
-    });
-    //
-    // FirebaseLanguage.instance
-    //     .modelManager()
-    //     .deleteModel(SupportedLanguages.Telugu)
-    //     .then((onValue) {
-    //   print(onValue);
-    // });
-
-    // FirebaseLanguage.instance
-    //     .modelManager()
-    //     .deleteModel(SupportedLanguages.Telugu)
-    //     .then((onValue) {
-    //   print(onValue);
-    // });
-
-    FirebaseLanguage.instance.modelManager().viewModels().then((onValue) {
+        .then((String onValue) {
       print(onValue);
     });
 
-    // FirebaseLanguage.instance
-    //     .modelManager()
-    //     .downloadModel(SupportedLanguages.Icelandic)
-    //     .then((onValue) {
-    //   print(onValue);
-    //   FirebaseLanguage.instance.modelManager().viewModels().then((onValue) {
-    //     print(onValue);
-    //   });
-    // });
+    FirebaseLanguage.instance
+        .modelManager()
+        .deleteModel(SupportedLanguages.Greek)
+        .then((String onValue) {
+      print(onValue);
+    });
+
+    FirebaseLanguage.instance
+        .modelManager()
+        .viewModels()
+        .then((List<String> onValue) {
+      print(onValue);
+    });
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
