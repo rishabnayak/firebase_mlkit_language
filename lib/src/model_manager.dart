@@ -19,9 +19,13 @@ class ModelManager {
 
   /// Shows all locally available models.
   Future<List<String>> viewModels() async {
-    final List<String> availableModels =
+    final List<dynamic> availableModels =
         await FirebaseLanguage.channel.invokeMethod('ModelManager#viewModels');
-    return availableModels;
+    final List<String> models = <String>[];
+    for (dynamic model in availableModels) {
+      models.add(model);
+    }
+    return models;
   }
 
   /// Deletes specified model.
