@@ -4,8 +4,7 @@ class FirebaseLanguage {
   FirebaseLanguage._();
 
   @visibleForTesting
-  static const MethodChannel channel =
-      const MethodChannel('firebase_mlkit_language');
+  static const MethodChannel channel = MethodChannel('firebase_mlkit_language');
 
   /// Singleton of [FirebaseLanguage].
   ///
@@ -22,12 +21,14 @@ class FirebaseLanguage {
   }
 
   /// Creates an instance of [LanguageTranslator].
-  LanguageTranslator languageTranslator(String fromLanguage, String toLanguage) {
-    return LanguageTranslator._(toLanguage: toLanguage, fromLanguage: fromLanguage);
+  LanguageTranslator languageTranslator(
+      String fromLanguage, String toLanguage) {
+    return LanguageTranslator._(
+        toLanguage: toLanguage, fromLanguage: fromLanguage);
   }
 
   /// Creates an instance of [ModelManager].
-  ModelManager modelManager(){
+  ModelManager modelManager() {
     return ModelManager._();
   }
 }

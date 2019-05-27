@@ -10,7 +10,8 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class FirebaseMlkitLanguagePlugin implements MethodCallHandler {
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "firebase_mlkit_language");
+    final MethodChannel channel =
+        new MethodChannel(registrar.messenger(), "firebase_mlkit_language");
     channel.setMethodCallHandler(new FirebaseMlkitLanguagePlugin());
   }
 

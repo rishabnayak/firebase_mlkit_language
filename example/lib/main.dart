@@ -16,35 +16,42 @@ class _MyAppState extends State<MyApp> {
     check();
   }
 
-  check() async {
-    String test = "testing this function";
+  void check() async {
+    final String test = "testing this function";
 
     FirebaseLanguage.instance
         .languageIdentifier()
         .processText(test)
-        .then((onValue) {
+        .then((List<LanguageLabel> onValue) {
       print(onValue[0].languageCode);
     });
 
     FirebaseLanguage.instance
         .modelManager()
         .downloadModel(SupportedLanguages.Greek)
-        .then((onValue) {
+        .then((String onValue) {
       print(onValue);
     });
 
     FirebaseLanguage.instance
         .languageTranslator(
-            SupportedLanguages.English, SupportedLanguages.Danish)
+            SupportedLanguages.English, SupportedLanguages.Vietnamese)
         .processText(test)
-        .then((onValue) {
+        .then((String onValue) {
       print(onValue);
     });
 
     FirebaseLanguage.instance
         .modelManager()
-        .deleteModel(SupportedLanguages.Telugu)
-        .then((onValue) {
+        .deleteModel(SupportedLanguages.Greek)
+        .then((String onValue) {
+      print(onValue);
+    });
+
+    FirebaseLanguage.instance
+        .modelManager()
+        .viewModels()
+        .then((List<String> onValue) {
       print(onValue);
     });
 
