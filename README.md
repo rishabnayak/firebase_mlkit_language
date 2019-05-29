@@ -1,5 +1,7 @@
 # ML Kit Natural Language Plugin
 
+![Pub](https://img.shields.io/pub/v/firebase_mlkit_language.svg?color=orange)
+
 A Flutter plugin to use the [ML Kit Natural Language for Firebase API](https://firebase.google.com/docs/ml-kit/).
 
 For Flutter plugins for other Firebase products, see [FlutterFire.md](https://github.com/flutter/plugins/blob/master/FlutterFire.md).
