@@ -93,7 +93,7 @@ final ModelManager modelManager = FirebaseLanguage.instance.modelManager()
 `downloadModel()` downloads the specified model to the device's local storage. It is recommended to download all the models needed to be used before translating to ensure a fast first-use. On a successful download, the string "Downloaded" will be returned.
 
 ```dart
-modelManager.downloadModel(SupportedLanguages.English)
+modelManager.downloadModel(SupportedLanguages.lang)
 ```
 
 ### 3. Delete Model using the model manager
