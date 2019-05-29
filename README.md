@@ -59,7 +59,7 @@ for (LanguageLabel label in labels) {
 Get an instance of `ModelManager`, and download the needed translation models(optional, results in faster first-use).
 
 ```dart
-FirebaseVision.instance.modelManager().downloadModel(SupportedLanguages.lang);
+FirebaseLanguage.instance.modelManager().downloadModel(SupportedLanguages.lang);
 ```
 
 ### 1. Create an instance of a language translator
