@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     inputText = inputTextController.text;
     var result = await FirebaseLanguage.instance
         .languageTranslator(
-            SupportedLanguages.English, SupportedLanguages.Bengali)
+            SupportedLanguages.English, SupportedLanguages.Spanish)
         .processText(inputText);
     setState(() {
       translatedText = result;
