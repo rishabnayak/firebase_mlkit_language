@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Added support for Android
+
 ## 1.0.1
 
 * Updated README, example
