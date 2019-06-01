@@ -4,13 +4,9 @@ import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
 import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateModelManager;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateRemoteModel;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
 
@@ -44,36 +40,36 @@ class LanguageTranslator implements LanguageAgent{
                             .setTargetLanguage(FirebaseTranslateLanguage.languageForLanguageCode((String) options.get("toLanguage")))
                             .build();
             translator = FirebaseNaturalLanguage.getInstance().getTranslator(translatorOptions);
-            FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().build();
-            translator.downloadModelIfNeeded(conditions)
-                    .addOnSuccessListener(
-                            new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void v) {
-                                    translator.translate(text)
-                                            .addOnSuccessListener(
-                                                    new OnSuccessListener<String>() {
-                                                        @Override
-                                                        public void onSuccess(@NonNull String translatedText) {
-                                                            result.success(translatedText);
-                                                        }
-                                                    })
-                                            .addOnFailureListener(
-                                                    new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            result.error("languageTranslatorError", e.getLocalizedMessage(), null);
-                                                        }
-                                                    });
-                                }
-                            })
-                    .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    result.error("languageTranslatorError", e.getLocalizedMessage(), null);
-                                }
-                            });
         }
+        FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().build();
+        translator.downloadModelIfNeeded(conditions)
+                .addOnSuccessListener(
+                        new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void v) {
+                                translator.translate(text)
+                                        .addOnSuccessListener(
+                                                new OnSuccessListener<String>() {
+                                                    @Override
+                                                    public void onSuccess(@NonNull String translatedText) {
+                                                        result.success(translatedText);
+                                                    }
+                                                })
+                                        .addOnFailureListener(
+                                                new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        result.error("languageTranslatorError", e.getLocalizedMessage(), null);
+                                                    }
+                                                });
+                            }
+                        })
+                .addOnFailureListener(
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                result.error("languageTranslatorError", e.getLocalizedMessage(), null);
+                            }
+                        });
     }
 }
