@@ -1,6 +1,6 @@
 package io.flutter.plugins.firebase_mlkit_language;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
