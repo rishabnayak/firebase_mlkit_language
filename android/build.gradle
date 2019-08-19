@@ -46,8 +46,8 @@ android {
     }
     dependencies {
         implementation 'androidx.annotation:annotation:1.1.0'
-        implementation 'com.google.firebase:firebase-ml-natural-language:20.0.2'
-        implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.2'
-        implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.2'
+        implementation 'com.google.firebase:firebase-ml-natural-language:21.0.0'
+        implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.3'
+        implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.3'
     }
 }
