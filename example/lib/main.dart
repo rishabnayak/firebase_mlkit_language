@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   var translatedText = "Translated Text";
   var inputText;
   var identifiedLang = "Detected Language";
+  var downloadedModelsLabel = "";
 
   void onPressed() async {
     inputText = inputTextController.text;
@@ -50,6 +51,24 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void onGetDownloadedModels() async {
+    var downloadedModels =
+        await FirebaseLanguage.instance.modelManager().viewModels();
+    setState(() {
+      downloadedModelsLabel = downloadedModels.join(',');
+    });
+  }
+
+  void onDownloadCSModel() async {
+    await FirebaseLanguage.instance.modelManager().downloadModel("cs");
+    onGetDownloadedModels();
+  }
+
+  void onDeleteCSModel() async {
+    await FirebaseLanguage.instance.modelManager().deleteModel("cs");
+    onGetDownloadedModels();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,19 +78,19 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: Colors.blue,
           ),
           body: new Container(
-            padding: EdgeInsets.all(50),
+            padding: EdgeInsets.all(10),
             child: new Center(
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new TextField(controller: inputTextController),
-                  new SizedBox(height: 50),
+                  new SizedBox(height: 10),
                   new RaisedButton(
                       child: new Text("Translate",
                           style: TextStyle(color: Colors.white)),
                       color: Colors.blue,
                       onPressed: onPressed),
-                  new SizedBox(height: 25),
+                  new SizedBox(height: 5),
                   new Container(
                     padding: EdgeInsets.all(20),
                     child: new SizedBox(
@@ -80,13 +99,13 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.black.withOpacity(0.05),
                     ),
                   ),
-                  new SizedBox(height: 20),
+                  new SizedBox(height: 5),
                   new RaisedButton(
                       child: new Text("Identify Language",
                           style: TextStyle(color: Colors.white)),
                       color: Colors.blue,
                       onPressed: onPoked),
-                  new SizedBox(height: 25),
+                  new SizedBox(height: 5),
                   new Container(
                     padding: EdgeInsets.all(10),
                     child: new Text(identifiedLang),
@@ -94,6 +113,32 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.black.withOpacity(0.05),
                     ),
                   ),
+                  new SizedBox(height: 5),
+                  new RaisedButton(
+                      child: new Text("Show downloaded models",
+                          style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      onPressed: onGetDownloadedModels),
+                  new SizedBox(height: 5),
+                  new Container(
+                    padding: EdgeInsets.all(10),
+                    child: new Text(downloadedModelsLabel),
+                    decoration: new BoxDecoration(
+                      color: Colors.black.withOpacity(0.05),
+                    ),
+                  ),
+                  new SizedBox(height: 5),
+                  new RaisedButton(
+                      child: new Text("Download cs model",
+                          style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      onPressed: onDownloadCSModel),
+                  new SizedBox(height: 5),
+                  new RaisedButton(
+                      child: new Text("Delete cs model",
+                          style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      onPressed: onDeleteCSModel),
                 ],
               ),
             ),
