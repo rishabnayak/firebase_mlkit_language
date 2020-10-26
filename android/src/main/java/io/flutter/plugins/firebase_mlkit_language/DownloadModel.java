@@ -6,7 +6,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateModelManager;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
 import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateRemoteModel;
 
 import io.flutter.plugin.common.MethodChannel;
@@ -22,9 +22,8 @@ class DownloadModel implements ModelAgent{
         Integer languageCode = FirebaseTranslateLanguage.languageForLanguageCode(modelName);
         FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().build();
         FirebaseTranslateRemoteModel model = new FirebaseTranslateRemoteModel.Builder(languageCode)
-                .setDownloadConditions(conditions)
                 .build();
-        FirebaseTranslateModelManager.getInstance().downloadRemoteModelIfNeeded(model)
+                FirebaseModelManager.getInstance().download(model, conditions)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void v) {

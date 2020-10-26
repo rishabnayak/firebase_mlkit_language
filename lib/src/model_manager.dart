@@ -21,11 +21,7 @@ class ModelManager {
   Future<List<String>> viewModels() async {
     final List<dynamic> availableModels =
         await FirebaseLanguage.channel.invokeMethod('ModelManager#viewModels');
-    final List<String> models = <String>[];
-    for (dynamic model in availableModels) {
-      models.add(model);
-    }
-    return models;
+    return availableModels.cast<String>().toList();
   }
 
   /// Deletes specified model.
