@@ -1,3 +1,7 @@
+## 1.1.3
+
+* Updated Firebase SDK
+
 ## 1.1.2
 
 * Minor updates
